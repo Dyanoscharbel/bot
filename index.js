@@ -5,7 +5,12 @@ const fetch = (...args) => import('node-fetch').then(({ default: fetch }) => fet
 const GEMINI_API_KEY = 'AIzaSyCdRtUKHW2fDpeWw5NvWGfiCnT9auIxjBU';
 const GEMINI_ENDPOINT = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${GEMINI_API_KEY}`;
 
-const client = new Client();
+
+const client = new Client({
+  puppeteer: {
+    args: ['--no-sandbox', '--disable-setuid-sandbox']
+  }
+});
 
 client.on('qr', (qr) => {
   qrcode.generate(qr, { small: true });
