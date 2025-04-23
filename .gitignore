@@ -1,2 +1,9 @@
-node_modules
 
+node_modules/
+.wwebjs_cache/
+.wwebjs_auth/
+!.wwebjs_auth/session/
+!.wwebjs_auth/session/Default/
+!.wwebjs_auth/session/Default/Cookies
+!.wwebjs_auth/session/Default/Cookies-journal
+!.wwebjs_auth/session/Default/Session\ Storage/
