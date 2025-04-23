@@ -8,6 +8,9 @@ const QRCode = require('qrcode');
 
 
 const client = new Client({
+  authStrategy: new LocalAuth({
+    dataPath: './.wwebjs_auth'
+}),
   puppeteer: {
     args: ['--no-sandbox', '--disable-setuid-sandbox']
   }
