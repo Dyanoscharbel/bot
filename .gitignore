@@ -1,6 +1,2 @@
 node_modules
 
-# Ne garder que les fichiers nécessaires à l'authentification
-*
-*
-!session/Default/creds.json
