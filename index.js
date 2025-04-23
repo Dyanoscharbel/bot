@@ -4,6 +4,7 @@ const fetch = (...args) => import('node-fetch').then(({ default: fetch }) => fet
 
 const GEMINI_API_KEY = 'AIzaSyCdRtUKHW2fDpeWw5NvWGfiCnT9auIxjBU';
 const GEMINI_ENDPOINT = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${GEMINI_API_KEY}`;
+const QRCode = require('qrcode');
 
 
 const client = new Client({
@@ -13,14 +14,22 @@ const client = new Client({
 });
 
 client.on('qr', (qr) => {
-    qrcode.generate(qr, { small: true }, (code) => {
-        console.log("📱 Scanne ce QR Code dans WhatsApp Web :");
-        console.log(code);
+
+   
+      console.log("📱 Scanne ce QR Code dans WhatsApp Web (ASCII) :");
+    
+      QRCode.toString(qr, { type: 'terminal' }, (err, asciiQR) => {
+        if (err) return console.error("Erreur QR ASCII:", err);
+        console.log(asciiQR);
       });
-      QRCode.toDataURL(qr, function (err, url) {
-        console.log("📷 Ouvre ce lien pour scanner le QR :");
+    
+      QRCode.toDataURL(qr, (err, url) => {
+        if (err) return console.error("Erreur QR image:", err);
+        console.log("\n📷 Lien vers QR image (ouvre dans un navigateur) :");
         console.log(url);
       });
+
+    
       
 });
 
