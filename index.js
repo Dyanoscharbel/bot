@@ -17,6 +17,11 @@ client.on('qr', (qr) => {
         console.log("📱 Scanne ce QR Code dans WhatsApp Web :");
         console.log(code);
       });
+      QRCode.toDataURL(qr, function (err, url) {
+        console.log("📷 Ouvre ce lien pour scanner le QR :");
+        console.log(url);
+      });
+      
 });
 
 client.on('ready', () => {
