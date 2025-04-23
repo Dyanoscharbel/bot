@@ -53,3 +53,13 @@ client.on('message', async (message) => {
   
 
 client.initialize();
+const express = require('express');
+const app = express();
+const PORT = process.env.PORT || 3000;
+
+app.get('/', (_, res) => res.send("Bot is running ✅"));
+
+app.listen(PORT, () => {
+  console.log(`✅ Express server running on port ${PORT}`);
+});
+
