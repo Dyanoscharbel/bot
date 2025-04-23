@@ -13,8 +13,10 @@ const client = new Client({
 });
 
 client.on('qr', (qr) => {
-  qrcode.generate(qr, { small: true });
-  console.log('📱 Scanne le QR code avec ton téléphone');
+    qrcode.generate(qr, { small: true }, (code) => {
+        console.log("📱 Scanne ce QR Code dans WhatsApp Web :");
+        console.log(code);
+      });
 });
 
 client.on('ready', () => {
